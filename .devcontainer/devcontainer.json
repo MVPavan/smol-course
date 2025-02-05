@@ -1,36 +1,29 @@
-// DevContainer configuration for Smol Course Development Environment
-// This file configures a development container with Python 3.12, Jupyter support,
-// and essential Python development extensions. It uses the uv package manager
-// and automatically sets up the Python virtual environment with required dependencies.
-// You can use it with Microsoft VS Code, Codespaces, Daytona.io and other tools that
-// support Dev Containers standard.
 {
-    "name": "Smol Course Development Environment",
-    "image": "mcr.microsoft.com/devcontainers/python:3.12",
-    "forwardPorts": [
-      8888
-    ],
-    "features": {
-      "ghcr.io/va-h/devcontainers-features/uv:1": {}
-    },
+    "name": "HF-SMOL",
+    "dockerComposeFile": "compose.pytorch25.yml",
+    "service": "smol_service",
+    "workspaceFolder": "/data/nvidia_local/opensource/smol-course",
     "customizations": {
-      "vscode": {
-        "settings": {
-          "python.defaultInterpreterPath": "/usr/local/bin/python"
-        },
-        "extensions": [
-          "ms-python.python",
-          "ms-python.pylint",
-          "ms-python.flake8",
-          "ms-python.black-formatter",
-          "njpwerner.autodocstring",
-          "matangover.mypy",
-          "ms-python.autopep8",
-          "ms-toolsai.jupyter",
-          "ms-toolsai.vscode-jupyter-powertoys",
-          "ms-toolsai.jupyter-hub"
-        ]
-      }
+        "vscode": {
+            "settings": {
+                "terminal.integrated.shell.linux": "/bin/bash"
+            },
+            "extensions": [
+                "sugatoray.vscode-git-extension-pack",
+                "franneck94.vscode-python-dev-extension-pack",
+                "franneck94.vscode-coding-tools-extension-pack",
+                "gruntfuggly.todo-tree",
+                "streetsidesoftware.code-spell-checker",
+                "oderwat.indent-rainbow",
+                "mechatroner.rainbow-csv",
+                "moshfeu.compare-folders",
+                "mikestead.dotenv",
+                "ms-toolsai.jupyter",
+                "yahyabatulu.vscode-markdown-alert",
+                "tomoki1207.pdf"
+            ]
+        }
     },
-    "postCreateCommand": "uv venv && uv pip sync requirements.txt"
-  }
+    "remoteUser": "root",
+    "shutdownAction": "none"
+}
