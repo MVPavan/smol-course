@@ -52,3 +52,23 @@ trainer = SFTTrainer(
 trainer.train()
 print("here")
 from transformers import ViTForImageClassification
+
+from trl import ORPOConfig, ORPOTrainer
+
+# Configure ORPO training
+orpo_config = ORPOConfig(
+    learning_rate=1e-5,
+    per_device_train_batch_size=4,
+    gradient_accumulation_steps=4,
+    max_steps=1000,
+    orpo_alpha=1.0,  # Controls strength of preference optimization
+    orpo_beta=0.1,   # Temperature parameter for odds ratio
+)
+
+# Initialize trainer
+trainer = ORPOTrainer(
+    model=model,
+    args=orpo_config,
+    train_dataset=dataset,
+    tokenizer=tokenizer,
+)
