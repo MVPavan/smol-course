@@ -1,3 +1,4 @@
 *.yml
-*.json
-*.condarc
+.condarc
+devcontainer.json
+dev_entrypoint.sh

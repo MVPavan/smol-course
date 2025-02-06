@@ -33,4 +33,6 @@ COPY requirements.txt /tmp/requirements.txt
 
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+
 # WORKDIR ~/
