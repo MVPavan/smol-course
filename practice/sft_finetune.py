@@ -72,3 +72,4 @@ trainer = ORPOTrainer(
     train_dataset=dataset,
     tokenizer=tokenizer,
 )
+trainer.train()
